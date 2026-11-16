@@ -46,3 +46,4 @@
 | NTP (internal) | R1 loopback | 1.1.1.1 | All infrastructure devices sync here |
 | NTP (upstream) | Server0 | 209.165.201.1 | R1 syncs here; `ntp master 3` fallback |
 | NAT/PAT | R1 Gi0/0/1 | Outside address 192.168.1.14 | `NAT-ALLOWED` eligibility ACL |
+
