@@ -1,0 +1,115 @@
+R2#show running-config
+Building configuration...
+
+Current configuration : 1502 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname R2
+!
+login block-for 120 attempts 3 within 60
+!
+!
+enable secret 5 [REDACTED]
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username admin secret 5 [REDACTED]
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+ip ssh time-out 60
+ip domain-name lab.corp
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+!
+interface GigabitEthernet0/0/0
+ ip address 192.168.1.9 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ no cdp enable
+ shutdown
+!
+interface GigabitEthernet0/0/2
+ ip address 192.168.1.18 255.255.255.252
+!
+router ospf 1
+ router-id 2.2.2.2
+ log-adjacency-changes
+ network 2.2.2.2 0.0.0.0 area 0
+ network 192.168.1.8 0.0.0.3 area 0
+ network 192.168.1.16 0.0.0.3 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+ip access-list extended sl_def_acl
+ deny tcp any any eq telnet
+ deny tcp any any eq www
+ deny tcp any any eq 22
+ permit tcp any any eq 22
+ip access-list standard MGMT-ACCESS
+ permit 192.168.10.0 0.0.0.255
+ deny any
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 5 0
+ logging synchronous
+ login local
+!
+line aux 0
+!
+line vty 0 4
+ access-class MGMT-ACCESS in
+ exec-timeout 5 0
+ login local
+ transport input ssh
+line vty 5 15
+ access-class MGMT-ACCESS in
+ exec-timeout 5 0
+ login local
+ transport input ssh
+!
+!
+ntp server 1.1.1.1
+!
+end
