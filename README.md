@@ -1,6 +1,6 @@
 # CCNA-Megalab — Collapsed-Core Enterprise Network: Design, Implementation & Hardening
 
-A complete enterprise-style network built in Cisco Packet Tracer (Version: 9.0.1.0858) after passing the CCNA: redundant collapsed-core architecture, dynamic routing, centralized network services, and layered security controls — with every configuration and verification command documented.
+A complete enterprise-style network built in Cisco Packet Tracer (Version: 9.0.1.0858) after passing the CCNA: redundant collapsed-core architecture, dynamic routing, centralized network services, and layered security controls, with every configuration and verification command documented.
 
 📖 **Full write-up with design rationale and the troubleshooting story:** [blog article — ◇ link]
 
@@ -80,7 +80,7 @@ Each item is evidenced with real lab output in the [verification/](verification/
 
 ## Key Lessons & Known Limitations
 
-**The NAT incident:** with ECMP toward the edge, a single missing `ip nat inside` on R1's second inside-facing interface silently untranslated flows exiting via R2 — while the lab ISP's static route to RFC 1918 space kept every connectivity test green. Connectivity tests prove packets flow; only translations prove NAT works. Full story with evidence: [verification/nat.md](verification/nat.md).
+**The NAT incident:** with ECMP toward the edge, a single missing `ip nat inside` on R1's second inside-facing interface silently untranslated flows exiting via R2, while the lab ISP's static route to RFC 1918 space kept every connectivity test green. Connectivity tests prove packets flow; only translations prove NAT works. Full story with evidence: [verification/nat.md](verification/nat.md).
 
 **Documented limitations:**
 
@@ -93,7 +93,7 @@ Each item is evidenced with real lab output in the [verification/](verification/
 
 ## Related Work
 
-This lab extends my security portfolio — see my other projects covering security investigations, Splunk log analysis, and blue-team certifications (BTL1, CCDL1, Security+): ◇ link to portfolio/blog home.
+This lab extends my security portfolio — see my other projects covering security investigations, Splunk log analysis, and blue-team certifications (BTL1, CCDL1, Security+): [Link to portfolio](https://citadelcybersec.netlify.app/) [Link to Medium](https://medium.com/@citadelcybersec)
 
 ---
 
