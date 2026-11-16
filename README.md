@@ -93,9 +93,7 @@ Each item is evidenced with real lab output in the [verification/](verification/
 
 ## Related Work
 
-This lab extends my security portfolio — see my other projects covering security investigations, Splunk log analysis, and blue-team certifications (BTL1, CCDL1, Security+): 
-[Link to portfolio](https://citadelcybersec.netlify.app/) 
-[Link to Medium](https://medium.com/@citadelcybersec)
+This lab extends my security portfolio — see my other projects covering security investigations, Splunk log analysis, and blue-team certifications (BTL1, CCDL1, Security+): [Link to portfolio](https://citadelcybersec.netlify.app/) | [Link to Medium](https://medium.com/@citadelcybersec)
 
 ---
 
