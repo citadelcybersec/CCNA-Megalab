@@ -1,6 +1,7 @@
 # Connectivity Tests — and Why They Were Not Enough
 
-Related screenshots: `07-pc-ipconfig.png`
+Related screenshots: 
+/assets/screenshots/5-PC-ipconfig-all.jpg
 
 ## Addressing sanity (VLAN 20 client)
 
