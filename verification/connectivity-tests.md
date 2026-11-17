@@ -1,7 +1,7 @@
 # Connectivity Tests — and Why They Were Not Enough
 
 Related screenshots: 
-/assets/screenshots/5-PC-ipconfig-all.jpg
+![ipconfig-all](/assets/screenshots/5-PC-ipconfig-all.jpg)
 
 ## Addressing sanity (VLAN 20 client)
 
@@ -27,11 +27,11 @@ FastEthernet0 Connection:(default port)
                                      209.165.201.1
 ```
 
-Note the gateway: **192.168.20.5** — the HSRP virtual IP, not a physical switch.
+Note the gateway: **192.168.20.5**. It is the HSRP virtual IP, not a physical switch.
 
 ## The green tests that hid the NAT bug
 
-End-to-end connectivity tests passed from every VLAN — which is precisely why the missing `ip nat inside` on Gi0/0/2 survived unnoticed until translations were inspected (full story: `nat.md`). No raw outputs of those earliest green pings were preserved; the principle they demonstrate — passing pings over a partially broken path — is documented narratively and made concrete by the traceroute below, which shows a client flow on exactly the path that was broken.
+End-to-end connectivity tests passed from every VLAN — which is precisely why the missing `ip nat inside` on Gi0/0/2 survived unnoticed until translations were inspected (full story: `nat.md`). No raw outputs of those earliest green pings were preserved; the principle they demonstrate (passing pings over a partially broken path) is documented narratively and made concrete by the traceroute below, which shows a client flow on exactly the path that was broken.
 
 ## Path evidence: traceroute from PC3 (VLAN 20)
 
@@ -53,7 +53,7 @@ Reading it: hop 1 answers as `192.168.20.4` — MLSW2 owns the VIP `.5` and repl
 
 ## Retest after both fixes (NAT tagged, ISP route removed)
 
-Captured in the final state — `ip nat inside` on both of R1's inside interfaces, and the ISP's static route to `192.168.0.0/16` deleted (route table in `nat.md`). Connectivity from all three user VLANs:
+Captured in the final state, `ip nat inside` on both of R1's inside interfaces, and the ISP's static route to `192.168.0.0/16` deleted (route table in `nat.md`). Connectivity from all three user VLANs:
 
 **PC1, VLAN 10:**
 
@@ -111,7 +111,7 @@ Approximate round trip times in milli-seconds:
     Minimum = 0ms, Maximum = 0ms, Average = 0ms
 ```
 
-All replies arrive with TTL 125 — outbound translations succeed and unsolicited inbound from the ISP fails (`ISP#ping 192.168.10.15`, in `nat.md`), exactly the intended boundary: private hosts work outward, and are invisible from outside.
+All replies arrive with TTL 125: outbound translations succeed and unsolicited inbound from the ISP fails (`ISP#ping 192.168.10.15`, in `nat.md`), exactly the intended boundary: private hosts work outward, and are invisible from outside.
 
 ## Takeaway
 
