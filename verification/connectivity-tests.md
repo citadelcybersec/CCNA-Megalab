@@ -1,9 +1,5 @@
 # Connectivity Tests — and Why They Were Not Enough
 
-Related screenshots: 
-
-![ipconfig-all](/assets/screenshots/5-PC-ipconfig-all.jpg)
-
 ## Addressing sanity (VLAN 20 client)
 
 DHCP lease from R1 (relay via the MLS switches), default gateway is the HSRP virtual IP .5, DNS from the pool (the raw capture also contains the PC's unused Bluetooth adapter with zeroed addresses; omitted here):
@@ -27,6 +23,7 @@ FastEthernet0 Connection:(default port)
    DNS Servers.....................: ::
                                      209.165.201.1
 ```
+![ipconfig-all](/assets/screenshots/5-PC-ipconfig-all.jpg)
 
 Note the gateway: **192.168.20.5**. It is the HSRP virtual IP, not a physical switch.
 
