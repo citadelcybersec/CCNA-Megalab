@@ -53,12 +53,14 @@ CCNA-Megalab/
 │   ├── MLSW1.txt  ├── MLSW2.txt
 │   ├── SW1.txt    ├── SW2.txt    ├── SW3.txt
 │   ├── R1.txt     ├── R2.txt     └── ISP.txt
-└── verification/        # real captured output — evidence, not illustration
-    ├── hsrp.md
-    ├── ospf.md          # incl. ECMP evidence
-    ├── nat.md           # the NAT incident: symptom, investigation, fix, post-fix proof
-    ├── dhcp-snooping-and-dai.md
-    └── connectivity-tests.md
+├── verification/        # real captured output — evidence, not illustration
+│    ├── hsrp.md
+│    ├── ospf.md          # incl. ECMP evidence
+│    ├── nat.md           # the NAT incident: symptom, investigation, fix, post-fix proof
+│    ├── dhcp-snooping-and-dai.md
+│    └── connectivity-tests.md
+└── assets/
+    └── screenshots/
 ```
 
 ## Validation Summary
