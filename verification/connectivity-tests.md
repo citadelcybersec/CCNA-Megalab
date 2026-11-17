@@ -23,7 +23,6 @@ FastEthernet0 Connection:(default port)
    DNS Servers.....................: ::
                                      209.165.201.1
 ```
-![ipconfig-all](/assets/screenshots/5-PC-ipconfig-all.jpg)
 
 Note the gateway: **192.168.20.5**. It is the HSRP virtual IP, not a physical switch.
 
