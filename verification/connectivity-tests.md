@@ -1,4 +1,4 @@
-# Connectivity Tests and Why They Were Not Enough
+# Connectivity Tests — and Why They Were Not Enough
 
 ## Addressing sanity (VLAN 20 client)
 
