@@ -1,4 +1,4 @@
-# Connectivity Tests — and Why They Were Not Enough
+# Connectivity Tests and Why They Were Not Enough
 
 ## Addressing sanity (VLAN 20 client)
 
@@ -28,7 +28,7 @@ Note the gateway: **192.168.20.5**. It is the HSRP virtual IP, not a physical sw
 
 ## The green tests that hid the NAT bug
 
-End-to-end connectivity tests passed from every VLAN — which is precisely why the missing `ip nat inside` on Gi0/0/2 survived unnoticed until translations were inspected (full story: `nat.md`). No raw outputs of those earliest green pings were preserved; the principle they demonstrate (passing pings over a partially broken path) is documented narratively and made concrete by the traceroute below, which shows a client flow on exactly the path that was broken.
+End-to-end connectivity tests passed from every VLAN, which is precisely why the missing `ip nat inside` on Gi0/0/2 survived unnoticed until translations were inspected (full story: `nat.md`). No raw outputs of those earliest green pings were preserved; the principle they demonstrate (passing pings over a partially broken path) is documented narratively and made concrete by the traceroute below, which shows a client flow on exactly the path that was broken.
 
 ## Path evidence: traceroute from PC3 (VLAN 20)
 
@@ -88,7 +88,7 @@ Approximate round trip times in milli-seconds:
     Minimum = 0ms, Maximum = 0ms, Average = 0ms
 ```
 
-PC3's single lost packet was the first echo of the run — consistent with ARP/path setup on the first packet rather than a path fault: the subsequent three replies succeeded with identical TTL, the translation table in `nat.md` shows PC3's VLAN 20 flows translating normally, and the traceroute above from the same PC completes. Noted for transparency, not treated as a failure.
+PC3's single lost packet was the first echo of the run, consistent with ARP/path setup on the first packet rather than a path fault: the subsequent three replies succeeded with identical TTL, the translation table in `nat.md` shows PC3's VLAN 20 flows translating normally, and the traceroute above from the same PC completes. Noted for transparency, not treated as a failure.
 
 **PC5, VLAN 30:**
 
