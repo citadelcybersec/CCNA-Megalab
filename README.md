@@ -2,7 +2,7 @@
 
 A complete enterprise-style network built in Cisco Packet Tracer (Version: 9.0.1.0858) after passing the CCNA: redundant collapsed-core architecture, dynamic routing, centralized network services, and layered security controls, with every configuration and verification command documented.
 
-📖 **Full write-up with design rationale and the troubleshooting story:** [blog article — ◇ link]
+📖 **Full write-up with design rationale and the troubleshooting story:** [Blog link](https://citadelcybersec.netlify.app/from-ccna-to-network-engineer-collapsed-core-lab)
 
 ![Topology](topology/network-topology.png)
 
