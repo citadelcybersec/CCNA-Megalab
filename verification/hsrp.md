@@ -4,8 +4,6 @@
 
 Per VLAN, HSRP Active and STP root are assigned to the same switch: MLSW1 is Active/root for VLANs 10 and 30, MLSW2 for VLAN 20. Endpoints use the virtual gateway (.5), never a physical switch.
 
-Related screenshots: `03-hsrp-standby-stp.png`, `04-hsrp-failover.png`
-
 ## Baseline roles (steady state)
 
 MLSW1 — Active for Vl10 (pri 150) and Vl30, Standby for Vl20:
