@@ -14,7 +14,7 @@ A complete enterprise-style network built in Cisco Packet Tracer (Version: 9.0.1
 - Dynamic routing (OSPF Area 0) with loopback router IDs, passive interfaces, and equal-cost multipath toward the edge
 - Centralized DHCP with relay, NAT/PAT with an eligibility ACL, DNS/NTP synchronization
 - Access-layer hardening: DHCP Snooping, Dynamic ARP Inspection, Port Security, BPDU Guard, SSH-only management with ACL restrictions
-- Methodical troubleshooting of a NAT misconfiguration masked by the lab environment — see [verification/nat.md](verification/nat.md)
+- Methodical troubleshooting of a NAT misconfiguration masked by the lab environment. See [verification/nat.md](verification/nat.md)
 
 ## Architecture
 
@@ -86,10 +86,10 @@ Each item is evidenced with real lab output in the [verification/](verification/
 
 **Documented limitations:**
 
-- Built in Cisco Packet Tracer (Version: 9.0.1.0858) — simulator constraints, not design choices, include:
+- Built in Cisco Packet Tracer (Version: 9.0.1.0858). Simulator constraints, not design choices, include:
   - Legacy Type 5 password hashing (modern platforms use stronger algorithms)
   - `passive-interface` declared explicitly (Port-channel can't be excluded from `passive-interface default`)
-- Access switch management SVIs live in user VLANs — a lab simplification; production would use a dedicated management VLAN
+- Access switch management SVIs live in user VLANs (a lab simplification) production would use a dedicated management VLAN
 - Syslog forwarding to a SIEM (Splunk) with detections for DHCP snooping violations, DAI drops, port-security events and SSH brute-force attempts is the planned next milestone
 - All credentials have been removed from published configurations
 
