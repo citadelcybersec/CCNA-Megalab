@@ -4,8 +4,6 @@
 
 Two controls deployed as a chain: snooping builds the binding table (trusting only infrastructure uplinks); DAI validates every ARP frame on untrusted ports against that table. Snooping without DAI defends only DHCP; DAI without snooping has nothing to validate against. Evidence from SW2, VLAN 20.
 
-Related screenshots: `12-snooping-binding.png` (refreshed), `13-dai-stats.png` (refreshed), `14-psecure-violation-fa0-6.png`, `15-psecure-fa0-6-status.png`, `16-static-pc-failed-ping.png`, `17-fa0-8-bringup.png`, `18-static-pc-successful-ping.png`, `19-dai-stats-after-static-test.png`
-
 ## DHCP Snooping
 
 Enabled on VLANs 10/20/30, uplinks trusted, all access ports untrusted:
