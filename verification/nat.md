@@ -1,7 +1,5 @@
 # NAT — The Incident: Every Test Passed, Half the Flows Were Broken
 
-Related screenshots: `08-nat-translations-postfix.png`, `09-nat-statistics.png`, `10-isp-route.png`, `11-isp-ping-fail.png`
-
 ## Symptom
 
 All VLANs reached the internet; every ping passed. Nothing looked wrong.
@@ -12,8 +10,8 @@ While verifying translations (not connectivity), `show ip nat translations` on R
 
 Root cause chain:
 
-1. MLSW2 load-balances edge-bound traffic across two equal-cost OSPF paths (evidence: `ospf.md`) — one exits via MLSW1's direct link to R1, the other via R2 into R1's Gi0/0/2.
-2. Flows that selected the R2 path arrived at R1 on **Gi0/0/2 — which was missing `ip nat inside`**.
+1. MLSW2 load-balances edge-bound traffic across two equal-cost OSPF paths (evidence: `ospf.md`). One exits via MLSW1's direct link to R1, the other via R2 into R1's Gi0/0/2.
+2. Flows that selected the R2 path arrived at R1 on **Gi0/0/2, which was missing `ip nat inside`**.
 3. Those flows left R1 **untranslated**, private source addresses intact.
 
 A client-side traceroute (in `connectivity-tests.md`) shows a VLAN 20 flow taking exactly this second branch: hop 2 is `192.168.1.9` (R2), entering R1 on Gi0/0/2.
@@ -129,7 +127,7 @@ icmp 192.168.1.14:9    192.168.10.17:9    209.165.201.1:9    209.165.201.1:9
 udp  192.168.1.14:123  192.168.1.14:123   209.165.201.1:123  209.165.201.1:123
 ```
 
-This is the decisive evidence for the fix: flows from **VLAN 10 (PC1, 192.168.10.17), VLAN 20 (PC3, 192.168.20.17) and VLAN 30 (PC5, 192.168.30.16)** all appear in the table, each translated to the same inside-global address **192.168.1.14** (PAT distinguishing flows by port), alongside the standing NTP flow from R1's loopback. Before the fix, flows arriving on the untagged Gi0/0/2 never appeared here at all — which is precisely why inspecting *translations*, not connectivity, was the discovery step.
+This is the decisive evidence for the fix: flows from **VLAN 10 (PC1, 192.168.10.17), VLAN 20 (PC3, 192.168.20.17) and VLAN 30 (PC5, 192.168.30.16)** all appear in the table, each translated to the same inside-global address **192.168.1.14** (PAT distinguishing flows by port), alongside the standing NTP flow from R1's loopback. Before the fix, flows arriving on the untagged Gi0/0/2 never appeared here at all, which is precisely why inspecting *translations*, not connectivity, was the discovery step.
 
 Supporting connectivity at capture time — **PC1, VLAN 10** (192.168.10.17):
 
